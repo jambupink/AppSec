@@ -5,6 +5,19 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (Model.CurrentUser != null)
+    {
+        <div class="user-profile">
+            
+            <h3>Welcome, @Model.CurrentUser.FullName!</h3>
+            <p>Credit Card Num: @Model.CurrentUser.CreditCardNo</p>
+            <p>Gender: @Model.CurrentUser.Gender</p>
+            <p>Mobile: @Model.CurrentUser.MobileNumber</p>
+             <p>Delivery Address: @Model.DeliveryAddress</p> 
+            <p>Email Address: @Model.CurrentUser.Email</p>
+            <p>Password: @Model.CurrentUser.PasswordHash</p>
+            <p>About me: @Model.CurrentUser.AboutMe</p>
+            <!-- Add other fields as needed -->
+        </div>
+    }
 </div>

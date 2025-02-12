@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApplication13.Model;
 using WebApplication13.ViewModels;
 
 namespace WebApplication13.Pages
@@ -10,9 +11,9 @@ namespace WebApplication13.Pages
         [BindProperty]
         public Login LModel { get; set; }
 
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
         
-        public LoginModel(SignInManager<IdentityUser> signInManager)
+        public LoginModel(SignInManager<ApplicationUser> signInManager)
         {
             this.signInManager = signInManager;
         }

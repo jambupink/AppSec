@@ -10,61 +10,67 @@
 		<div class="col-sm-12 col-md-12 col-lg-4">
 			<h1 class="mb-3">Register </h1>
 
-			<form method="post">
+			<form method="post" enctype="multipart/form-data">
 				<div asp-validation-summary="All" class="text-danger"></div>
 
 				<div class="mb-3">
 					<label class="form-label" asp-for="RModel.FullName">Full Name</label>
 					<input type="Text" asp-for="RModel.FullName" class="form-control" />
-					<span asp-validaton-for="RModel.FullName" class="text-danger"></span>
+					<span asp-validation-for="RModel.FullName" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" asp-for="RModel.CreditCardNo">Credit Card Number</label>
 					<input type="Text" asp-for="RModel.CreditCardNo" class="form-control" />
-					<span asp-validaton-for="RModel.CreditCardNo" class="text-danger"></span>
+					<span asp-validation-for="RModel.CreditCardNo" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" asp-for="RModel.Gender">Gender</label>
 					<input type="Text" asp-for="RModel.Gender" class="form-control" />
-					<span asp-validaton-for="RModel.Gender" class="text-danger"></span>
+					<span asp-validation-for="RModel.Gender" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" asp-for="RModel.MobileNumber">Mobile Number</label>
 					<input type="Text" asp-for="RModel.MobileNumber" class="form-control" />
-					<span asp-validaton-for="RModel.MobileNumber" class="text-danger"></span>
+					<span asp-validation-for="RModel.MobileNumber" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="RModel.DeliveryAddress">Delivery Address</label>
+					<input type="Text" asp-for="RModel.DeliveryAddress" class="form-control" />
+					<span asp-validation-for="RModel.DeliveryAddress" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" asp-for="RModel.Email">Email Address</label>
 					<input type="Text" asp-for="RModel.Email" class="form-control" />
-					<span asp-validaton-for="RModel.Email" class="text-danger"></span>
+					<span asp-validation-for="RModel.Email" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" asp-for="RModel.Password">Password</label>
-					<input type="Text" asp-for="RModel.Password" class="form-control" />
-					<span asp-validaton-for="RModel.Password" class="text-danger"></span>
+					<input type="password" asp-for="RModel.Password" class="form-control" />
+					<span asp-validation-for="RModel.Password" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" asp-for="RModel.ConfirmPassword">Confirm Password</label>
-					<input type="Text" asp-for="RModel.ConfirmPassword" class="form-control" />
-					<span asp-validaton-for="RModel.ConfirmPassword" class="text-danger"></span>
+					<input type="password" asp-for="RModel.ConfirmPassword" class="form-control" />
+					<span asp-validation-for="RModel.ConfirmPassword" class="text-danger"></span>
 				</div>
 
 				@* <div class="mb-3"> *@
-				@* 	<label class="form-label" asp-for="RModel.Photo">Photo</label> *@
-				@* 	<input type="Text" asp-for="RModel.Photo" class="form-control" /> *@
-				@* 	<span asp-validaton-for="RModel.Photo" class="text-danger"></span> *@
+				@* 	<label class="form-label" asp-for="RModel.Photo">Profile Photo (.JPG only)</label> *@
+				@* 	<input type="file" asp-for="RModel.Photo" class="form-control" accept=".jpg,.jpeg,.JPG,.JPEG" /> *@
+				@* 	<span asp-validation-for="RModel.Photo" class="text-danger"></span> *@
 				@* </div> *@
 
 				<div class="mb-3">
-					<label class="form-label" asp-for="RModel.AboutMe">AboutMe</label>
+					<label class="form-label" asp-for="RModel.AboutMe">About Me</label>
 					<input type="Text" asp-for="RModel.AboutMe" class="form-control" />
-					<span asp-validaton-for="RModel.AboutMe" class="text-danger"></span>
+					<span asp-validation-for="RModel.AboutMe" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">

@@ -24,11 +24,17 @@ namespace WebApplication13.ViewModels
         [RegularExpression(@"^\d{8}$", ErrorMessage = "Invalid phone number format, only 8 digit")]
         public string MobileNumber { get; set; }
 
+        [Required(ErrorMessage = "Delivery Address is required")]
+        [DataType(DataType.MultilineText)]
+        [StringLength(500, ErrorMessage = "Delivery Address cannot exceed 500 characters")]
+        public string DeliveryAddress { get; set; }
+
         [Required(ErrorMessage = "Email address is required")]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Invalid email format")]
         public string Email { get; set; }
 
+        //client side validation
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         [StringLength(100, MinimumLength = 12, ErrorMessage = "Password must be at least 12 characters")]
@@ -40,9 +46,10 @@ namespace WebApplication13.ViewModels
         [Compare(nameof(Password), ErrorMessage = "Passwords does not match")]
         public string ConfirmPassword { get; set; }
 
-        //[Required]
-        //[DataType(DataType.ImageUrl)]
-        //public string Photo { get; set; }
+        //[Required(ErrorMessage = "Profile photo is required")]
+        //[DataType(DataType.Upload)]
+        //[FileExtensions(Extensions = ".jpg,.jpeg,.JPG,.JPEG", ErrorMessage = "Only JPG/JPEG files allowed")]
+        //public IFormFile Photo { get; set; }
 
         [Required(ErrorMessage = "About Me is required")]
         [DataType(DataType.MultilineText)]

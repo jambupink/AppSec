@@ -1,6 +1,9 @@
-﻿
+﻿@using WebApplication13.Model
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
+@inject SignInManager<ApplicationUser> SignInManager
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 
 <!DOCTYPE html>
 <html lang="en">
