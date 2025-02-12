@@ -24,6 +24,11 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
 builder.Services.Configure<FormOptions>(options => {
     options.MultipartBodyLengthLimit = 20 * 1024 * 1024; // 20MB limit
 });
+
+builder.Services.ConfigureApplicationCookie(Config =>
+{
+    Config.LoginPath = "/Login";
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
