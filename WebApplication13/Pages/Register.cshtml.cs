@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApplication13.Model;
 using WebApplication13.ViewModels;
+using Newtonsoft.Json;
+using Ganss.Xss;
 
 namespace WebApplication13.Pages
 {
@@ -19,16 +21,31 @@ namespace WebApplication13.Pages
             this.userManager = userManager; 
             this.signInManager = signInManager;
         }
+        private async Task<bool> ValidateRecaptcha()
+        {
+            var recaptchaResponse = Request.Form["g-recaptcha-response"];
+            using HttpClient client = new();
+            var response = await client.GetStringAsync($"https://www.google.com/recaptcha/api/siteverify?secret=6Lfv0NQqAAAAAAo5CBMDedlaAMbyfNyZ6XDmRm3y&response={recaptchaResponse}");
+            return JsonConvert.DeserializeObject<RecaptchaResponse>(response).Success;
+        }
 
         public void OnGet()
         {
 
         }
+
         //Save data into the database
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
+                if (!await ValidateRecaptcha())
+                {
+                    ModelState.AddModelError("", "CAPTCHA validation failed.");
+                    return Page();
+                }
+
                 //Check email
                 var existingUser = await userManager.FindByEmailAsync(RModel.Email);
                 if (existingUser != null)
@@ -57,7 +74,7 @@ namespace WebApplication13.Pages
                 //{
                 //    await RModel.Photo.CopyToAsync(stream);
                 //}
-
+                var sanitizer = new HtmlSanitizer();
                 var user = new ApplicationUser
                 {
                     UserName = RModel.Email,
@@ -68,7 +85,7 @@ namespace WebApplication13.Pages
                     MobileNumber = RModel.MobileNumber,
                     DeliveryAddress = RModel.DeliveryAddress,
                     //PhotoPath = $"/uploads/{fileName}",
-                    AboutMe = RModel.AboutMe
+                    AboutMe = sanitizer.Sanitize(RModel.AboutMe)
 
                 };
                 var result = await userManager.CreateAsync(user, RModel.Password); 

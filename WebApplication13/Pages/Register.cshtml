@@ -2,6 +2,7 @@
 @model WebApplication13.Pages.RegisterModel
 @{
 }
+@Html.AntiForgeryToken()
 
 <div class="container mt-5">
 
@@ -72,6 +73,16 @@
 					<input type="Text" asp-for="RModel.AboutMe" class="form-control" />
 					<span asp-validation-for="RModel.AboutMe" class="text-danger"></span>
 				</div>
+
+				<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+				<script src="https://www.google.com/recaptcha/api.js?render=6Lfv0NQqAAAAAL9HDXGejqdJPnCnNxGmiGcU68E8"></script>
+				<script>
+					grecaptcha.ready(function() {
+						grecaptcha.execute('6Lfv0NQqAAAAAL9HDXGejqdJPnCnNxGmiGcU68E8', { action: 'submit' }).then(function(token) {
+							document.getElementById('g-recaptcha-response').value = token;
+						});
+					});
+				</script>
 
 				<div class="mb-3">
 					<button type="submit" class="btn btn-primary">Register</button>

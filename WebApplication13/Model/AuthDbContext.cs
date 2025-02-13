@@ -7,5 +7,6 @@ namespace WebApplication13.Model
     {
         public AuthDbContext(DbContextOptions<AuthDbContext> options)
            : base(options) { }
+        public DbSet<UserSession> UserSessions { get; set; }
     }
 }
