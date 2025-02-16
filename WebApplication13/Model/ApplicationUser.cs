@@ -8,7 +8,7 @@ namespace WebApplication13.Model
         public string FullName { get; set; }
 
         [PersonalData]
-        public string CreditCardNo { get; set; }  // Will encrypt this later
+        public string CreditCardNo { get; set; } 
 
         [PersonalData]
         public string Gender { get; set; }
@@ -19,7 +19,7 @@ namespace WebApplication13.Model
         [PersonalData]
         public string DeliveryAddress { get; set; }
 
-        //public string PhotoPath { get; set; }  // Stores path to uploaded photo
+        //public string PhotoPath { get; set; }  
 
         [PersonalData]
         public string AboutMe { get; set; }

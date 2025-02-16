@@ -80,7 +80,7 @@ namespace WebApplication13.Pages
                     UserName = RModel.Email,
                     Email = RModel.Email,
                     FullName = RModel.FullName,
-                    CreditCardNo = RModel.CreditCardNo,  // Will encrypt later
+                    CreditCardNo = RModel.CreditCardNo, 
                     Gender = RModel.Gender,
                     MobileNumber = RModel.MobileNumber,
                     DeliveryAddress = RModel.DeliveryAddress,
